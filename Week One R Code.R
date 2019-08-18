@@ -1,0 +1,12 @@
+#1
+a=1:20
+b=20:1
+c=c(1:19,20:1)
+tmp=c(4,6,3)
+e=rep(c(4,6,3),10)
+f=rep(c(4,6,3),11,len=31)
+g=rep(c(4,6,3),c(10,20,30))
+#2
+fx=function(x)exp(x)*cos(x)
+do=seq(3,6,0.1)
+fi=lapply(do,fx)
