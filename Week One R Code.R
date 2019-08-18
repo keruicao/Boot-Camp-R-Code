@@ -22,3 +22,24 @@ four=sum(sapply(10:100,function(x)x^3+4*x^2))
 a = paste("label",1:30,sep = " ")
 b = paste("fn",1:30,sep = "")
 #6
+set.seed(50)
+xVec = sample(0:999,250,replace = T)
+yVec = sample(0:999,250,replace = T)
+##a
+x=xVec[-length(xVec)]
+y=yVec[-1]
+a6=y-x
+xx=xVec[-1]
+yy=yVec[-length(yVec)]
+b6=sin(yy)/cos(xx)
+xc1=xVec[-1]
+xc2=xVec[c(-1,-2)]
+c6=xVec+2*xc1-xc2
+c6=c6[c(-length(c6),-(length(c6)-1))]
+xu=xVec[-1]
+d6=sum(exp(-xu)/(xVec+10)[-length(xVec)])
+a7=xVec[xVec>600]
+b7=which(xVec>600)
+c7=xVec[c(which(yVec>600))]
+mn=mean(xVec)
+d7=sapply(xVec, function(x)abs(x-mn)^0.5)
