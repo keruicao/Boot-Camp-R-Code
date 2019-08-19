@@ -43,3 +43,12 @@ b7=which(xVec>600)
 c7=xVec[c(which(yVec>600))]
 mn=mean(xVec)
 d7=sapply(xVec, function(x)abs(x-mn)^0.5)
+e7=sort(xVec,decreasing=T)[1:200]
+f7=xVec[xVec%%2==0]
+x=cbind(xVec,yVec)
+x=x[order(x[,2]),]
+g7=x[,1]
+h7=yVec[c(seq(1,250,3))]
+#8
+a8=sum(cumprod(c(1,seq(2,38,2))/c(seq(1,39,2))))
+a8
