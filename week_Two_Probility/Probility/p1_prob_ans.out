@@ -1,0 +1,59 @@
+
+
+## This file uses R to solve the problems from 
+## Friday's probability class <P4 Probability Problems.pdf>
+##
+
+Problem 1: Discrete distribution
+x      p(x)
+1      0.50
+2      0.30
+5      0.15
+10      ??
+
+(a) Find P(x=10)
+
+P(x=10) = 1 - (P(x=1) + p(x=2) + p(x=5)) = 1 - (.5 + .3 + .15) = .05
+
+x <- c(1,2,5,10)
+p.x <- c(.5,.3,.15,NA)
+p.x[4] <- 1 - sum(p.x, na.rm = TRUE)
+
+
+p.x =  0.5 0.3 0.15 0.05
+
+(b) What is the expected value?
+
+weighted.mean(x, p.x) = E(x) = 2.35
+
+
+
+ #################################
+
+problem 2
+
+A basketball player is practicing 3-pointers. If the probability that he
+successfully scores each shot is 4/5
+
+(a) What is the expected value of the points he scores after 100 shots?
+
+The distribution of successful shots is binomial with p=0.8.
+
+E[x] = np = 100*.8 = 80
+
+(b) What is the probability that the player has 20 misses (out of the 100 shots)?
+
+P(x=80) = choose(100,80)*.8^80*.2^20 = dbinom(80, 100, .8) = 0.099
+
+Take a look at the distribution.
+
+Start R and examine the distribution.
+plot(dbinom(0:100, 100, .8))
+plot(pbinom(0:100, 100, .8))
+set.seed(2019)
+x <- rbinom(1000, 100, .8)
+hist(x)
+p <- dbinom(0:100, 100, .8)
+
+weighted.mean(0:100, p)
+

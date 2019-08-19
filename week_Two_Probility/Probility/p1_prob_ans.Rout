@@ -1,0 +1,106 @@
+
+R version 3.6.1 (2019-07-05) -- "Action of the Toes"
+Copyright (C) 2019 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> sink("p1_prob_ans.out")
+> 
+> cat("\n\n")
+> 
+> cat("## This file uses R to solve the problems from 
++ ## Friday's probability class <P4 Probability Problems.pdf>
++ ##")
+> 
+> cat("\n\n")
+> cat("Problem 1: Discrete distribution\n")
+> cat(sprintf("x      p(x)\n"))
+> cat(sprintf("%i      %2.2f\n",1,0.50))
+> 
+> cat(sprintf("%i      %2.2f\n",2,0.30))
+> cat(sprintf("%i      %2.2f\n",5,0.15))
+> cat(sprintf("%i      %s",10,"??"))
+> 
+> 
+> cat("\n\n")
+> 
+> cat("(a) Find P(x=10)\n\n")
+> 
+> cat("P(x=10) = 1 - (P(x=1) + p(x=2) + p(x=5)) = 1 - (.5 + .3 + .15) = .05\n\n")
+> 
+> cat(sprintf("x <- c(1,2,5,10)\n"))
+> 
+> cat("p.x <- c(.5,.3,.15,NA)\n")
+> 
+> cat("p.x[4] <- 1 - sum(p.x, na.rm = TRUE)\n")
+> 
+> x <- c(1,2,5,10)
+> 
+> p.x <- c(.5,.3,.15,NA)
+> 
+> 
+> 
+> cat("\n")
+> 
+> p.x[4] <- 1 - sum(p.x, na.rm = TRUE)
+> 
+> 
+> cat("\n")
+> cat("p.x = ",p.x)
+> 
+> cat("\n\n")
+> 
+> cat("(b) What is the expected value?\n\n")
+> 
+> 
+> m.x <- weighted.mean(x, p.x)
+> 
+> cat(sprintf("weighted.mean(x, p.x) = E(x) = %2.2f\n\n",m.x))
+> 
+> 
+> cat("\n\n #################################\n\n")
+> 
+> cat("problem 2\n\n")
+> cat("A basketball player is practicing 3-pointers. If the probability that he
++ successfully scores each shot is 4/5\n\n")
+> 
+> cat("(a) What is the expected value of the points he scores after 100 shots?\n\n")
+> 
+> cat("The distribution of successful shots is binomial with p=0.8.\n\n")
+> 
+> cat("E[x] = np = 100*.8 = 80\n\n")
+> 
+> cat("(b) What is the probability that the player has 20 misses (out of the 100 shots)?\n\n")
+> 
+> cat(sprintf("P(x=80) = choose(100,80)*.8^80*.2^20 = dbinom(80, 100, .8) = %1.3f\n\n", dbinom(80,100,.8)))
+> 
+> cat("Take a look at the distribution.\n\n")
+> 
+> cat("Start R and examine the distribution.\n")
+> 
+> cat("plot(dbinom(0:100, 100, .8))\n")
+> cat("plot(pbinom(0:100, 100, .8))\n")
+> cat("set.seed(2019)\n")
+> cat("x <- rbinom(1000, 100, .8)\n")
+> cat("hist(x)\n")
+> cat("p <- dbinom(0:100, 100, .8)\n\n")
+> cat("weighted.mean(0:100, p)\n\n")
+> 
+> sink()
+> 
+> proc.time()
+   user  system elapsed 
+   0.17    0.23    0.26 
