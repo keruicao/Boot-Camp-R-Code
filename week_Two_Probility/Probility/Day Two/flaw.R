@@ -25,36 +25,47 @@
 #' You set the stock.
 
 
-
-
-
+Num_of_days=20000
 
 EGPL=NULL
+
 for(STK in 15:140){
-  demand_Simu=sample(seq(15,140, by=5),size=200000,replace=T,prob= c(.04,.09,.11,.11,.10,.09,.08,.07,
+  demand_Simu=sample(seq(15,140, by=5),size=Num_of_days,replace=T,prob= c(.04,.09,.11,.11,.10,.09,.08,.07,
                                                                               .05,.04,.03,.03,.02,.02,
                                                                               .01,.01,.01,.01,.01,.01,
                                                                               .01,.01,.01,.01,.01,.01))
-  S=sapply(demand_Simu, function(x)min(x,STK))
-  GP=S*9-STK*6
-  EGP=mean(GP)
-  EGPL=c(EGPL,EGP)
+  
+  S = sapply(demand_Simu, function(x)min(x,STK))
+  
+  GP = S * 9 - STK * 6
+  
+  EGP = mean(GP)
+  
+  EGPL =c(EGPL,EGP)
 }
-STock=15:140
-dim(STock)=c(length(STock),1)
-dim(EGPL)=c(length(STock),1)
-result=cbind(STock,EGPL)
+
+Stock_level = 15:140
+
+dim(Stock_level) = c(length(Stock_level),1)
+
+
+dim(EGPL) = c(length(Stock_level),1)
+
+result = cbind(Stock_level,EGPL)
+
 plot(result)
 
-length(demand)
-length(demand_p)
 
-sum(demand_p)
-percentile <- cumsum(demand_p)
-plot(demand,percentile)
-points(demand, demand_p)
 
-weighted.mean(demand, demand_p)
+
+#length(demand)
+#length(demand_p)
+
+#sum(demand_p)
+#percentile <- cumsum(demand_p)
+#plot(demand,percentile)
+#points(demand, demand_p)
+#weighted.mean(demand, demand_p)
 
 
 
