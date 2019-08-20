@@ -1,0 +1,6 @@
+bb=vector
+for(i in 1:100){
+	a=mean(rbinom(10000,100,8))
+	bb=c(bb,a)
+}
+
